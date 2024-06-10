@@ -9,10 +9,6 @@ const routes = [
     element: <App />,
   },
   {
-    path: "/",
-    element: <Navigation />,
-  },
-  {
     path: "/home",
     element: <Home />,
   },
