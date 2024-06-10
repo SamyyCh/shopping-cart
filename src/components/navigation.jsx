@@ -11,7 +11,7 @@ function Navigation() {
                 <Link to="/shop">Shop</Link>
             </div>
             <div id="cart">
-                <Link to="/cart">Cart</Link>
+                <Link to="/cart">Cart : -</Link>
             </div>
         </div>
     )
