@@ -1,19 +1,17 @@
-import { useState } from "react"
-
+import { Link } from "react-router-dom";
+import '../styles/navigation.css'
 
 function Navigation() {
-    const [logo, setLogo] = useState("")
-    const [shop, setShop] = useState("Shop")
-    const [cart, setCart] = useState("Cart")
-
     return (
         <div className="header">
-            <div id="logo">Logo</div>
+            <div id="home">
+                <Link to="/home">Home</Link>
+            </div>
             <div id="shop">
-                <button onClick={shop}>Shop</button>
+                <Link to="/shop">Shop</Link>
             </div>
             <div id="cart">
-                <a href="cart-page" onClick={cart}>Cart</a>
+                <Link to="/cart">Cart</Link>
             </div>
         </div>
     )

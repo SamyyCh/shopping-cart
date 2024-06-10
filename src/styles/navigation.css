@@ -1,0 +1,12 @@
+.header {
+    height: 75px;
+    background-color: rgb(80, 80, 80);
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#home, #shop, #cart {
+    margin: auto;
+    font-weight: bold;
+}
