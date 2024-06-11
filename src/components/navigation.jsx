@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import '../styles/navigation.css'
+import '../styles/navigation.css';
 
-function Navigation() {
+function Navigation({ total }) {
     return (
         <div className="header">
             <div id="home">
@@ -11,10 +11,10 @@ function Navigation() {
                 <Link to="/shop">Shop</Link>
             </div>
             <div id="cart">
-                <Link to="/cart">Cart : -</Link>
+                <Link to="/cart">Cart: {total}$</Link>
             </div>
         </div>
-    )
+    );
 }
 
-export default Navigation
+export default Navigation;

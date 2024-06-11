@@ -5,7 +5,6 @@ import '../styles/home.css'
 function Home() {
     return (
     <>
-    <Navigation />
         <div className="homePage">
             <div id="homeText">
                 <h1>EXPLORE OUR STORE!</h1>

@@ -1,7 +1,5 @@
-// import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from 'styled-components';
-import Navigation from "./navigation";
 import '../styles/shop.css';
 
 const ImageContainer = styled.div`
@@ -14,10 +12,10 @@ const ImageContainer = styled.div`
   border-radius: 10px;
 `;
 
-function Shop() {
+function Shop({ addToTotal, addToCart }) {
     const useProductData = () => {
         const [products, setProducts] = useState([]);
-        const [loading, setLoading] = useState(true)
+        const [loading, setLoading] = useState(true);
       
         useEffect(() => {
             const fetchProduct = async () => {
@@ -42,9 +40,17 @@ function Shop() {
 
     const { products, loading } = useProductData();
 
+    const [quantities, setQuantities] = useState({});
+
+    const handleQuantityChange = (index, value) => {
+        setQuantities(prevQuantities => ({
+            ...prevQuantities,
+            [index]: value,
+        }));
+    };
+
     return (
         <>
-            <Navigation />
             <div className="shopPage">
                 {loading ? (
                     <div id="loading">Loading...</div>
@@ -54,7 +60,21 @@ function Shop() {
                         <ImageContainer image={product.image} />
                         <h2>{product.title}</h2>
                         <p>{product.price}$</p>
-                        <button id="atc">Add to cart</button>
+                        <div id="carting">
+                            <input
+                                id="quantity"
+                                type="number"
+                                value={quantities[index] || 1}
+                                onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}
+                            />
+                            <button
+                                id="atc"
+                                onClick={() => addToTotal(quantities[index] || 1, product.price)
+                                        & addToCart(product.title, product.price, quantities[index] || 1)}
+                            >
+                                Add to cart
+                            </button>
+                        </div>
                     </div>
                 )))}
             </div>
