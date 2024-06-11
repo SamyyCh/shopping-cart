@@ -1,18 +1,33 @@
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import '../styles/cart.css';
 
 
-function Cart({ cart }) {
+function Cart({ cart, total, removeFromCart, clearAll }) {
     return (
-        <div>
+        <div className="cartPage">
             <h1>Cart</h1>
-            <ul>
+            <div className="gridTitles">
+                <div id="title">Product Name</div>
+                <div id="price">Price</div>
+                <div id="amount">Quantity</div>
+                <div id="delete">Remove</div>
+            </div>
+            <div className="cartGrid">
                 {cart.map((item, index) => (
-                    <li key={index}>
-                        {item.product} - ${item.price} x {item.quantity}
-                    </li>
+                    <div id="cartedItem" key={index}>
+                        <div id="cartTitle">{item.product}</div>
+                        <div id="cartPrice">{item.price}$</div>
+                        <div id="cartQuantity">{item.quantity}</div>
+                        <button id="remove" onClick={() => removeFromCart(index, item.quantity, item.price)}>X</button>
+                    </div>
                 ))}
-            </ul>
+            </div>
+            <div id="cartTotal">
+                Total : {total}$
+            </div>
+            <button id="checkout" onClick={() => clearAll()}>
+                <Link to="/checkout">Checkout</Link>
+            </button>
         </div>
     );
 }

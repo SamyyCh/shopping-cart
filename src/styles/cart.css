@@ -1,0 +1,72 @@
+.cartPage {
+    margin: 30px;
+}
+
+.gridTitles {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+    border: 1px solid black;
+    height: 50px;
+}
+
+#title, #price, #amount, #delete {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: darkslategray;
+    color: white;
+}
+
+#cartedItem {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+}
+
+#cartTitle {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: 1px solid black;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+#cartPrice, #cartQuantity, #cartTotal {
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cartTotal {
+    font-weight: bold;
+    background-color: darkslategray;
+    color: white;
+}
+
+#remove {
+    background-color: rgb(80, 80, 80);
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+#remove:hover, #checkout:hover {
+    background-color: rgb(110, 110, 110);
+}
+
+#checkout {
+    margin-top: 10px;
+    background-color: rgb(80, 80, 80);
+    color: white;
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: bold;
+}
