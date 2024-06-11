@@ -60,3 +60,13 @@ h2 {
     font-size: 18px;
     transition-timing-function: ease-in-out;
 }
+
+@media screen and (max-width: 800px) {
+    .shopPage {
+        grid-template-columns: 1fr;
+    }
+
+    #loading {
+        grid-column: 1;
+    }
+}
