@@ -59,7 +59,7 @@ function Shop({ addToTotal, addToCart }) {
                     <div id="item" key={index}>
                         <ImageContainer image={product.image} />
                         <h2>{product.title}</h2>
-                        <p>{product.price}$</p>
+                        <p>{Math.round(product.price)}$</p>
                         <div id="carting">
                             <input
                                 id="quantity"
