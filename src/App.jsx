@@ -12,22 +12,35 @@ function App() {
 
     const addToTotal = (quantity, price) => {
         setTotal(prevTotal => Math.round(prevTotal + (quantity * price)));
-    }
+    };
 
     const addToCart = (product, price, quantity) => {
-      const newProduct = { product, price, quantity };
-      setCart(prevCart => [...prevCart, newProduct]);
-  }
+        setCart(prevCart => {
+            const existingProductIndex = prevCart.findIndex(item => item.product === product);
+            if (existingProductIndex !== -1) {
+                const updatedCart = prevCart.map((item, index) => {
+                    if (index === existingProductIndex) {
+                        return { ...item, quantity: item.quantity + quantity };
+                    }
+                    return item;
+                });
+                return updatedCart;
+            } else {
+                const newCart = [...prevCart, { product, price, quantity }];
+                return newCart;
+            }
+        });
+    };
 
-  const removeFromCart = (indexToRemove, quantity, price) => {
-    setCart(prevCart => prevCart.filter((item, index) => index !== indexToRemove));
-    setTotal(prevTotal => Math.round(prevTotal - (quantity * price)))
-  }
+    const removeFromCart = (indexToRemove, quantity, price) => {
+        setCart(prevCart => prevCart.filter((item, index) => index !== indexToRemove));
+        setTotal(prevTotal => Math.round(prevTotal - (quantity * price)));
+    };
 
-  const clearAll = () => {
-    setTotal(0)
-    setCart([])
-  }
+    const clearAll = () => {
+        setTotal(0);
+        setCart([]);
+    };
 
     return (
         <Router>
@@ -35,8 +48,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/shop" element={<Shop addToTotal={addToTotal} addToCart={addToCart}/>} />
-                <Route path="/cart" element={<Cart cart={cart} total={total} removeFromCart={removeFromCart} clearAll={clearAll}/>} />
+                <Route path="/shop" element={<Shop addToTotal={addToTotal} addToCart={addToCart} />} />
+                <Route path="/cart" element={<Cart cart={cart} total={total} removeFromCart={removeFromCart} clearAll={clearAll} />} />
                 <Route path="/checkout" element={<Checkout />} />
             </Routes>
         </Router>

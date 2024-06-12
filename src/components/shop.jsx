@@ -69,8 +69,8 @@ function Shop({ addToTotal, addToCart }) {
                             />
                             <button
                                 id="atc"
-                                onClick={() => addToTotal(quantities[index] || 1, product.price)
-                                        & addToCart(product.title, product.price, quantities[index] || 1)}
+                                onClick={() => addToTotal(quantities[index] || 1, Math.round(product.price))
+                                        & addToCart(product.title, Math.round(product.price), quantities[index] || 1)}
                             >
                                 Add to cart
                             </button>

@@ -16,7 +16,7 @@ function Cart({ cart, total, removeFromCart, clearAll }) {
                 {cart.map((item, index) => (
                     <div id="cartedItem" key={index}>
                         <div id="cartTitle">{item.product}</div>
-                        <div id="cartPrice">{item.price}$</div>
+                        <div id="cartPrice">{Math.round(item.price)}$</div>
                         <div id="cartQuantity">{item.quantity}</div>
                         <button id="remove" onClick={() => removeFromCart(index, item.quantity, item.price)}>X</button>
                     </div>
